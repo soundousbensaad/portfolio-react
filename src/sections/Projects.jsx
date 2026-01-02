@@ -18,8 +18,8 @@ function Projects({ visible, darkMode, language }) {
       title: "Lab 7: Kanban Board",
       desc: language === "en" ? "Task management app for organizing projects" : "Application de gestion des tâches pour organiser les projets",
       tech: "React, Vite, CSS Modules",
-      github: "https://github.com/soundousbensaad/lab7-kanban",
-      demo: "lab7-kanban-board-ap82.vercel.app"
+      github: "https://github.com/soundousbensaad/Lab7-Kanban-Board",
+      demo:" https://vercel.com/soundous-projects-4a619936/lab7-kanban-board-287f/oX7aKWfTwANi2E1i16ipCwAdRfs"
     },
     {
       title: "Lab 6: Portfolio",
