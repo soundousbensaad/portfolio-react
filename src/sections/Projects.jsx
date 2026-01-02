@@ -19,13 +19,13 @@ function Projects({ visible, darkMode, language }) {
       desc: language === "en" ? "Task management app for organizing projects" : "Application de gestion des tâches pour organiser les projets",
       tech: "React, Vite, CSS Modules",
       github: "https://github.com/soundousbensaad/lab7-kanban",
-      demo: "https://lab7-kanban.vercel.app"
+      demo: "lab7-kanban-board-ap82.vercel.app"
     },
     {
       title: "Lab 6: Portfolio",
       desc: language === "en" ? "Personal portfolio website showcasing skills" : "Site web de portfolio personnel présentant les compétences",
       tech: "React, Vite, CSS Modules",
-      github: "https://github.com/soundousbensaad/portfolio",
+      github: "https://github.com/soundousbensaad/portfolio-react",
     },
     {
       title: "Lab 2: Git & GitHub/GitLab",
@@ -60,12 +60,12 @@ function Projects({ visible, darkMode, language }) {
       github: "https://github.com/anfelrihem/lab5_react",
     },
     {
-      title: language === "en" ? "Medical Website" : "Site Web Médical",
+      title: language === "en" ? " Laboratory Website for Patient Services and AI-Driven Scan Classification" : "Site Web de laboratoire pour les services aux patients et la classification des analyses basée sur l’IA",
       desc: language === "en" 
-        ? "Discover our laboratory equipped with cutting-edge technology for accurate diagnostics" 
-        : "Découvrez notre laboratoire équipé de technologies de pointe pour des diagnostics précis",
+        ? " This project aims to develop a secure web platform for laboratory patients,enabling them to access and download scan results, receive AI-based classification reports forthree specific diseases, and consult with or be directed to nearby physicians." 
+        : "Ce projet vise à développer une plateforme web sécurisée pour les patients de laboratoire, leur permettant d’accéder et de télécharger les résultats de leurs analyses, de recevoir des rapports de classification basés sur l’IA pour trois maladies spécifiques, et de consulter ou d’être orientés vers des médecins à proximité.",
       tech: "Laravel, AI",
-      github: "http://127.0.0.1:8000/welcome",
+      github: "https://github.com/soundousbensaad/pfe_ASlab",
     },
   ];
 

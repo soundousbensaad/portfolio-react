@@ -1,23 +1,21 @@
-// App.jsx - Version simplifiée
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Home from "./sections/Home";
-import Projects from "./sections/Projects";
-import Skills from "./sections/Skills";
 import Contact from "./sections/Contact";
+import About from "./sections/About";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+
   const [language, setLanguage] = useState(() => {
     const saved = localStorage.getItem("portfolioLanguage");
     if (saved) return saved;
-    const browserLang = navigator.language;
-    return browserLang.startsWith("fr") ? "fr" : "en";
+    return navigator.language.startsWith("fr") ? "fr" : "en";
   });
 
   useEffect(() => {
-    if (darkMode) document.body.classList.add('dark');
-    else document.body.classList.remove('dark');
+    document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
   useEffect(() => {
@@ -26,27 +24,37 @@ function App() {
 
   return (
     <Routes>
-      <Route 
-        path="/" 
+      <Route
+        path="/"
         element={
-          <Home 
-            darkMode={darkMode} 
+          <Home
+            darkMode={darkMode}
             setDarkMode={setDarkMode}
             language={language}
             setLanguage={setLanguage}
           />
-        } 
+        }
       />
-      <Route 
-        path="/contact" 
+
+      <Route
+        path="/about"
         element={
-          <Contact 
+          <About
             darkMode={darkMode}
-            language={language} // ⬅️ IMPORTANT: Passe la langue ici
+            language={language}
           />
-        } 
+        }
       />
-      {/* Ajoute les autres routes aussi */}
+
+      <Route
+        path="/contact"
+        element={
+          <Contact
+            darkMode={darkMode}
+            language={language}
+          />
+        }
+      />
     </Routes>
   );
 }

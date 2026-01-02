@@ -89,10 +89,11 @@
 
 /* ===== Light Mode Base Styles ===== */
 body {
-  background: #f8fafc;
+  background: #f3d2f3;
   color: #1e293b;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 
 .home {
   min-height: 80vh;
@@ -102,7 +103,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
-  background: #ffe4e6;
+   background: linear-gradient(135deg, #d8b4fe, #fbcfe8);
   border-radius: 20px;
   max-width: 900px;
   margin: 40px auto;
@@ -111,6 +112,40 @@ body {
   transform: translateY(30px);
   transition: all 0.6s ease-out, background 0.3s ease;
 }
+/* ===== Home Section Animation ===== */
+.homeSection {
+  opacity: 0;            /* invisible au départ */
+  transform: translateY(30px); /* décalage initial vers le bas */
+  transition: all 0.6s ease-out;
+}
+
+.homeSection.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Option : animation en cascade pour les éléments */
+.homeSection .fadeItem {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.homeSection .fadeItem:nth-child(1) { animation-delay: 0.1s; }
+.homeSection .fadeItem:nth-child(2) { animation-delay: 0.2s; }
+.homeSection .fadeItem:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .home.fadeSlide {
   opacity: 1;
@@ -176,7 +211,7 @@ body {
   left: 0;
   width: 300px;
   height: 100vh;
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  background: linear-gradient(135deg, #d8b4fe, #fbcfe8);
   color: #1e293b;
   padding: 100px 30px 40px;
   transform: translateX(-100%);
@@ -247,80 +282,11 @@ body {
   z-index: 999;
 }
 
-/* ===== Projects Section ===== */
-.projects {
-  padding: 50px 20px;
-  background: #fff0f6;
-  text-align: center;
-  border-radius: 20px;
-  max-width: 1000px;
-  margin: 40px auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-.projects .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  border: 1px solid #fbcfe8;
-  border-radius: 12px;
-  padding: 20px;
-  background: #fff0f6;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-
-.card.fadeSlide {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Zigzag animation - FIXED */
-@keyframes zigzag {
-  0%   { transform: translateX(0) rotate(0deg); }
-  25%  { transform: translateX(-5px) rotate(-0.5deg); }
-  50%  { transform: translateX(5px) rotate(0.5deg); }
-  75%  { transform: translateX(-5px) rotate(-0.5deg); }
-  100% { transform: translateX(0) rotate(0deg); }
-}
-
-.card.fadeSlide.zigzag {
-  animation: zigzag 3s infinite ease-in-out;
-  animation-delay: 0.5s;
-}
-
-.card h3 {
-  color: #d946ef;
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: #ec4899;
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.card span {
-  background: #f472b6;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 5px;
-  font-size: 0.85rem;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  display: inline-block;
-}
 
 /* ===== Skills Section ===== */
 .skills {
   padding: 50px 20px;
-  background: linear-gradient(135deg, #f3e8ff, #fde4ed);
+  background: linear-gradient(135deg, #d8b4fe, #fbcfe8);
   text-align: center;
   border-radius: 20px;
   margin: 40px auto;
@@ -470,10 +436,12 @@ body {
 
 /* ===== DARK MODE STYLES (WITH !important) ===== */
 /* Body background in dark mode */
-body.dark {
-  background: radial-gradient(circle at top, #0f172a, #020617) !important;
-  color: #f8fafc !important;
+.dark .body {
+  background: radial-gradient(circle at top, #4c1d95, #1e0b3c) !important; /* violet/mauve */
+  color: #f8fafc !important; /* texte clair */
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
 
 /* Home section dark mode */
 .dark .home {
@@ -526,7 +494,7 @@ body.dark {
 
 .dark .sidebarNav p:hover {
   background: rgba(124, 58, 237, 0.1) !important;
-  color: #f472b6 !important;
+  color: #df6cf7 !important;
 }
 
 /* PROJECTS SECTION DARK MODE - FIXED */

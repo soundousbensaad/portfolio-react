@@ -4,20 +4,25 @@ import profilePic from "../assets/profile.jpg";
 import { FaLinkedin, FaInstagram, FaFacebook, FaPhone } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Projects from "./Projects"; 
+
 import { useNavigate } from "react-router-dom";
+
 
 function Home({ darkMode, setDarkMode }) { // Receive darkMode from App.jsx
   const homeRef = useRef(null);
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
+  
   const navigate = useNavigate();
+
+
 
   const [homeVisible, setHomeVisible] = useState(false);
   const [projectsVisible, setProjectsVisible] = useState(false);
   const [skillsVisible, setSkillsVisible] = useState(false);
   const [contactVisible, setContactVisible] = useState(false);
-
+  
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Initialize language based on browser preference
@@ -90,6 +95,7 @@ function Home({ darkMode, setDarkMode }) { // Receive darkMode from App.jsx
   useEffect(() => {
     localStorage.setItem("portfolioLanguage", language);
   }, [language]);
+  
 
   useEffect(() => {
     const options = { threshold: 0.2 };
@@ -142,7 +148,7 @@ function Home({ darkMode, setDarkMode }) { // Receive darkMode from App.jsx
           aria-label={`Switch to ${language === "en" ? "French" : "English"}`}
           title={`${language === "en" ? "Français" : "English"}`}
         >
-          {language === "en" ? "🇫🇷" : "🇺🇸"}
+          {language === "en" ? "FR" : "EN"}
         </button>
         
         {/* Menu Button */}
@@ -157,29 +163,41 @@ function Home({ darkMode, setDarkMode }) { // Receive darkMode from App.jsx
       </div>
 
       {/* Sidebar */}
-      <div className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
-        <div className={styles.sidebarHeader}>
-          <h3>{text[language].Menu}</h3>
-        </div>
-        <div className={styles.sidebarNav}>
-          <p onClick={() => { scrollTo(homeRef); setSidebarOpen(false); }}>
-            <span className={styles.icon}>⌂</span>
-            {text[language].home}
-          </p>
-          <p onClick={() => { scrollTo(projectsRef); setSidebarOpen(false); }}>
-            <span className={styles.icon}>◉</span>
-            {text[language].projects}
-          </p>
-          <p onClick={() => { scrollTo(skillsRef); setSidebarOpen(false); }}>
-            <span className={styles.icon}>⚙</span>
-            {text[language].skills}
-          </p>
-          <p onClick={() => { scrollTo(contactRef); setSidebarOpen(false); }}>
-            <span className={styles.icon}>✉</span>
-            {text[language].contact}
-          </p>
-        </div>
-      </div>
+<div className={`${styles.sidebar} ${sidebarOpen ? styles.open : ""}`}>
+  <div className={styles.sidebarHeader}>
+    <h3>{text[language].navigation}</h3>
+  </div>
+
+  <div className={styles.sidebarNav}>
+    <p onClick={() => { scrollTo(homeRef); setSidebarOpen(false); }}>
+      <span className={styles.icon}>⌂</span>
+      {text[language].home}
+    </p>
+
+<p onClick={() => { navigate("/about"); setSidebarOpen(false); }}>
+  <span className={styles.icon}>👤</span>
+  {text[language].about}
+</p>
+
+
+
+    <p onClick={() => { scrollTo(projectsRef); setSidebarOpen(false); }}>
+      <span className={styles.icon}>◉</span>
+      {text[language].projects}
+    </p>
+
+    <p onClick={() => { scrollTo(skillsRef); setSidebarOpen(false); }}>
+      <span className={styles.icon}>⚙</span>
+      {text[language].skills}
+    </p>
+
+    <p onClick={() => { scrollTo(contactRef); setSidebarOpen(false); }}>
+      <span className={styles.icon}>✉</span>
+      {text[language].contact}
+    </p>
+  </div>
+</div>
+
 
       {/* Overlay - Click to close sidebar */}
       {sidebarOpen && (
@@ -225,11 +243,11 @@ function Home({ darkMode, setDarkMode }) { // Receive darkMode from App.jsx
         <h2 className={styles.heading}>{text[language].contactMe}</h2>
         <div className={styles.contactList}>
           {[
-            { icon: <MdEmail />, text: "Personal:soundousbensaad@gmail.com", link: "mailto:soundousbensaad@gmail.com" },
-            { icon: <MdEmail />, text: "University: soundous.bensaad@univ-constantine2.dz", link: "mailto:soundous.bensaad@univ-constantine2.dz" },
+            { icon: <MdEmail />, text: "Personal:soundousbensaad@gmail.com", link: "https://mail.google.com/mail/u/1/#inbox?compose=prDfqJpvGnMFWSRhvzHqBWwbKHphhLgNglGlpCWhVdQwJMCwXwkdNzkQpdbchdfWVCtgThZTtxsScCPKVXpsVtBNPMKWklSxHhvhDtsSLgshfkvfLmxwVxnTZJgHfsxzxmHlCzPPWBdmLBbcgTXHGhFL" },
+            { icon: <MdEmail />, text: "University: soundous.bensaad@univ-constantine2.dz", link: "https://mail.google.com/mail/u/0/?pli=1#inbox?compose=CllgCJvpbJbBShMswsShRXXwRKgvbbWDJqfTmDSzslnskJZLWskwRpJLcXMQLmFNqvzbzdksTLq" },
             { icon: <FaLinkedin />, text: "linkedin.com/in/soundous-bensaad", link: "https://www.linkedin.com/in/soundous-bensaad-30a3203a4/" },
             { icon: <FaInstagram />, text: "s_n_d_s_ben", link: "https://www.instagram.com/s_n_d_s_ben?igsh=dXVheHMxdmM3aTF6&utm_source=qr" },
-            { icon: <FaFacebook />, text: "soundousben", link: "https://facebook.com/soundousben" },
+            { icon: <FaFacebook />, text: "soundousben", link: "https://www.facebook.com/share/1BaZjpfk6T/?mibextid=wwXIfr" },
             { icon: <FaPhone />, text: "+213551817219", link: "tel:+213551817219" }
           ].map((item, idx) => (
             <p key={idx} className={`${styles.contactItem} ${contactVisible ? styles.fadeSlide : ""} ${idx % 2 === 0 ? styles.fromLeft : styles.fromRight}`} style={{ transitionDelay: `${idx * 0.2}s` }}>
